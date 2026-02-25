@@ -1,10 +1,15 @@
-import React from "react";
-import { Card } from "../../components";
+import React, { Fragment } from "react";
+import {  Header,  Main, SideBar } from "../../components";
 
 export const Dashboard: React.FC = () => {
   return (
-    <>
-      <Card className="w-64">hhhh</Card>
-    </>
+    <Fragment>
+      <SideBar />
+      <Header/>
+      <Main>
+        9999
+        
+      </Main>
+    </Fragment>
   );
 };
