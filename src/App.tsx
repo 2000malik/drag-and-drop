@@ -1,8 +1,20 @@
-import "./App.css";
-import { Dashboard } from "./features";
+import { Fragment } from 'react';
+
+import { Dashboard } from './features';
+import { Header, Main, SideBar } from './components';
+
+import './App.css';
 
 function App() {
-  return <Dashboard />;
+  return (
+    <Fragment>
+      <SideBar />
+      <Header />
+      <Main>
+        <Dashboard />
+      </Main>
+    </Fragment>
+  );
 }
 
 export default App;
