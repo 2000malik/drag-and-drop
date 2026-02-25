@@ -1,5 +1,5 @@
 import React, { type ComponentPropsWithoutRef, type ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "../../../libs/utils";
 
 type Props = ComponentPropsWithoutRef<"input"> & {
   leftIcon?: ReactNode;
@@ -13,7 +13,7 @@ export const Input: React.FC<Props> = ({ className, leftIcon, ...props }) => {
       )}
       <input
         {...props}
-        className={twMerge(
+        className={cn(
           "border border-gray-300 rounded-lg p-2",
           leftIcon && "pl-9",
           className,
