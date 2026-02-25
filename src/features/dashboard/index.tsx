@@ -1,5 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+
+import { CloudNetwork } from './components/cloud-network';
 
 export const Dashboard: React.FC = () => {
-  return <Fragment>9999</Fragment>;
+  return (
+    <div className='flex flex-col gap-3'>
+      <CloudNetwork />
+    </div>
+  );
 };

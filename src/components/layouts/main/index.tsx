@@ -6,7 +6,7 @@ type Props = {
 
 export const Main: React.FC<Props> = ({ children }) => {
   return (
-    <main className="fixed top-17 left-70.5 right-3 bottom-3 overflow-y-auto scroll-smooth p-2">
+    <main className="fixed top-17 left-70.5 right-3 bottom-3 overflow-y-auto scroll-smooth mt-3">
       {children}
     </main>
   );

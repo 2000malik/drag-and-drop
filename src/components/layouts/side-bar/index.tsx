@@ -20,7 +20,7 @@ export const SideBar: React.FC = () => {
       </div>
       <div className=''>
         <SidebarSection items={SIDE_BAR_LINKS.slice(9, SIDE_BAR_LINKS.length)} />
-        <div className='border-t border-[#ececec] mt-4 mb-4'>
+        <div className='border-t border-border mt-4 mb-4'>
           <Avatar />
         </div>
       </div>
