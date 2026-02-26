@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# Drag-and-Drop Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React + TypeScript + Vite application demonstrating a drag‑and‑drop dashboard with reusable components and hooks. Built for learning and experimentation with modern frontend patterns.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## React Compiler
+- **Framework:** React 19
+- **Language:** TypeScript
+- **Bundler:** Vite
+- **Styling:** CSS modules / global CSS
+- **Drag-and-drop:** `@dnd-kit/react` (installed)
+- **Linting:** ESLint (configured via `eslint.config.js`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📁 Folder Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+/ (root)
+├─ public/              Static assets (favicon, index.html)
+├─ src/
+│  ├─ assets/           Images, SVGs, icons
+│  ├─ components/       Shared UI components (buttons, cards, form inputs)
+│  ├─ constants/        App constants (e.g. sidebar links)
+│  ├─ features/         Feature modules (dashboard, charts, etc.)
+│  ├─ hooks/             Custom React hooks (drag context, item handling)
+│  └─ libs/              Utility helpers
+├─ tsconfig*.json       TypeScript configuration
+├─ vite.config.ts       Vite configuration file
+└─ package.json         Project metadata and scripts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> See `/src` for the full breakdown; components are grouped by responsibility and feature.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Getting Started
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   Open http://localhost:5173 in your browser. HMR is enabled.
+
+3. **Build for production**
+   ```bash
+   npm run build
+   ```
+   Output is generated in `dist/`.
+
+4. **Preview production build locally**
+   ```bash
+   npm run preview
+   ```
+
+---
+
+## ⚙️ Scripts
+
+| Command         | Description                         |
+|-----------------|-------------------------------------|
+| `npm run dev`   | Start dev server (hot reload)       |
+| `npm run build` | Create optimized production build   |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint`  | Run ESLint across the source set    |
+
+---
+
+## 🧩 Features
+
+- Drag‑and‑drop ordering using custom hooks (`use-draggable-list.ts`, `use-drag-item.ts`)
+- Dashboard layout with collapsible sidebar
+- Reusable form components (button, input, select)
+- Various chart and card components under `/src/features/dashboard/components`
+
+---
+
+## 📦 Dependencies
+
+Key packages (see `package.json` for full list):
+
+- `react`, `react-dom`
+- `vite`, `typescript`
+- `@dnd-kit/react` – drag-and-drop utilities
+
+---
+
+## 📄 Notes
+
+- The project uses absolute imports via `tsconfig.json` with baseUrl set to `src`.
+- ESLint configuration lives in `eslint.config.js` and can be extended for stricter rules as needed.
+- Styles are simple CSS, adjust to your own preferred approach (CSS modules, Tailwind, etc.).
+
+---
+
+Feel free to fork and extend the application to fit your use case!

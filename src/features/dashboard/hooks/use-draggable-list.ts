@@ -2,20 +2,8 @@ import { useState } from 'react';
 import { arrayMove } from '@dnd-kit/sortable';
 import type { DragEndEvent } from '@dnd-kit/core';
 
-import { cloudSummaryCards } from '../data';
-
-type SummaryItem = {
-  id: string;
-  item: (typeof cloudSummaryCards)[number];
-};
-export const useSummaryActions = () => {
-  const buildInitialItems = (): SummaryItem[] =>
-    cloudSummaryCards.map((card) => ({
-      id: card.title,
-      item: card,
-    }));
-
-  const [items, setItems] = useState<SummaryItem[]>(buildInitialItems);
+export const useDraggableList = <T>(initialItems: T[], getId: (item: T) => string) => {
+  const [items, setItems] = useState(() => initialItems.map((item) => ({ id: getId(item), item })));
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -27,5 +15,6 @@ export const useSummaryActions = () => {
       });
     }
   };
-  return { items, setItems, buildInitialItems, handleDragEnd };
+
+  return { items, setItems, handleDragEnd };
 };

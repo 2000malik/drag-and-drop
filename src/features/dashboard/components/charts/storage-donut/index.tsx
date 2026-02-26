@@ -3,22 +3,31 @@ import { OctagonAlert, Server } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 import { storage_chart_data } from '../../../data';
+import { DraggableItem } from '../../../../../hooks/use-drag-item';
+import { useDraggableList } from '../../../hooks/use-draggable-list';
 import { Button, Card, HeaderWithIcon } from '../../../../../components';
+import { rectSortingStrategy, SortableContext } from '@dnd-kit/sortable';
+import { DragContextWrapper } from '../../../../../hooks/use-drag-context-wrapper';
 
 const USED_PERCENTAGE = 80;
 
-const Legend: React.FC = () => (
+type LegendProps = {
+  items: { id: string; item: { name: string; color: string } }[];
+};
+const Legend: React.FC<LegendProps> = ({ items }) => (
   <div className='grid grid-cols-3 gap-x-8 gap-y-3 mt-6'>
-    {storage_chart_data.map((entry) => (
-      <div key={entry.name} className='flex items-center gap-2'>
-        <span className='w-3 h-3 rounded-sm shrink-0' style={{ backgroundColor: entry.color }} />
-        <span className='text-sm whitespace-nowrap text-dark'>{entry.name}</span>
-      </div>
+    {items.map(({ id, item }) => (
+      <DraggableItem key={id} id={id}>
+        <div className='flex items-center gap-2'>
+          <span className='w-3 h-3 rounded-sm shrink-0' style={{ backgroundColor: item.color }} />
+          <span className='text-sm whitespace-nowrap text-dark'>{item.name}</span>
+        </div>
+      </DraggableItem>
     ))}
   </div>
 );
-
 export const StorageDonutChart: React.FC = () => {
+  const { items, handleDragEnd } = useDraggableList(storage_chart_data, (entry) => entry.name);
   return (
     <div className='flex flex-col gap-3'>
       <HeaderWithIcon title='Storage' icon={<Server size={17} />} isTitleMedium />
@@ -76,7 +85,11 @@ export const StorageDonutChart: React.FC = () => {
             </div>
           </Card>
 
-          <Legend />
+          <DragContextWrapper onDragEnd={handleDragEnd}>
+            <SortableContext items={items.map((i) => i.id)} strategy={rectSortingStrategy}>
+              <Legend items={items} />
+            </SortableContext>
+          </DragContextWrapper>
 
           <div className='flex justify-end mt-10'>
             <Button showIcon variant='outline'>
