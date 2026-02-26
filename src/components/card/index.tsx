@@ -7,7 +7,7 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 
 export const Card: React.FC<Props> = ({ children, className, ...props }) => {
   return (
-    <div {...props} className={cn('bg-white rounded-lg p-3 min-h-25', className)}>
+    <div {...props} className={cn('bg-white rounded-lg p-3 min-h-25 overflow-hidden', className)}>
       {children}
     </div>
   );

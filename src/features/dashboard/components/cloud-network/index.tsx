@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
-import { Globe, UserRound } from 'lucide-react';
+import { Globe } from 'lucide-react';
 
 import { SectionCard } from '../cards/section-card';
 import { SummaryGroupCard } from '../cards/summary-group-card';
 import { cloudSummaryCards } from '../../data';
+import { StorageDonutChart } from '../charts/storaga-donut';
+import { Card } from '../../../../components';
 
 export const CloudNetwork: React.FC = () => {
   return (
@@ -26,8 +28,9 @@ export const CloudNetwork: React.FC = () => {
             />
           ))}
         </div>
-
-        <SummaryGroupCard title='Users' icon={<UserRound size={17} />} />
+        <Card>
+          <StorageDonutChart />
+        </Card>
       </div>
     </Fragment>
   );

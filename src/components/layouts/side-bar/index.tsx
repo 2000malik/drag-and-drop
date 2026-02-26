@@ -8,7 +8,7 @@ import { SIDE_BAR_LINKS } from '../../../constants/side-bar';
 
 export const SideBar: React.FC = () => {
   return (
-    <aside className='bg-white rounded-lg px-2 pt-10 fixed top-3 bottom-3 left-3 w-65 flex flex-col'>
+    <aside className='bg-white rounded-lg px-2 pt-10 fixed top-3 bottom-3 left-3 w-60 flex flex-col'>
       {/* Logo */}
       <div className='mb-9 flex items-center justify-center'>
         <img src={logo} alt='Snaarp logo' width={100} height={100} fetchPriority='high' />

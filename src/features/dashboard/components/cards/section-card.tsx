@@ -33,7 +33,7 @@ export const SectionCard: React.FC<Props> = ({
           </Button>
         )}
         {onChevron && (
-          <Button className='bg-white p-0' onClick={onChevron}>
+          <Button className='bg-white p-0' onClick={onChevron} id={`#${title}`} aria-label={title}>
             <ChevronDown className='text-dark' />
           </Button>
         )}
