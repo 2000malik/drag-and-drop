@@ -20,11 +20,11 @@ const data = [
 ];
 type Props = { isNegative?: boolean };
 export const TinyChart: React.FC<Props> = ({ isNegative }) => {
-  const stoke = !isNegative ? '#34A853' : '#EA4336';
+  const stoke = !isNegative ? '#81d44a' : '#EA4336';
   const fill = !isNegative ? '#34A85324' : '#FFEBEB';
   const chartData = isNegative ? [...data].reverse() : data;
   return (
-    <ResponsiveContainer width={170} height={90}>
+    <ResponsiveContainer width={130} height={90}>
       <AreaChart
         width={200}
         height={60}

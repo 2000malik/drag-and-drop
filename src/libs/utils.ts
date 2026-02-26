@@ -12,11 +12,11 @@ export const isActiveLink = ({ link, pathname }: { link?: string; pathname: stri
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
-export const getStatusColor = (status: number, variant: ColorVariant = 'text'): string => {
-  const color = status < 1 ? 'danger' : 'success';
+export const getStatusColor = (status: boolean, variant: ColorVariant = 'text'): string => {
+  const color = status ? 'danger' : 'success';
   return `${variant}-${color}`;
 };
 
-export const getIcon = (status: number): string => {
-  return status < 1 ? '180deg' : 'initial';
+export const getIcon = (status: boolean): string => {
+  return status ? 'rotate-0' : 'rotate-180';
 };
