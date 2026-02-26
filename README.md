@@ -6,10 +6,12 @@ A simple React + TypeScript + Vite application demonstrating a drag‑and‑drop
 
 ## 🔧 Tech Stack
 
+- **Node:** v25.6.1
+- **npm:** 11.9.0
 - **Framework:** React 19
 - **Language:** TypeScript
 - **Bundler:** Vite
-- **Styling:** CSS modules / global CSS
+- **Styling:** Tailwind CSS (with occasional global styles)
 - **Drag-and-drop:** `@dnd-kit/react` (installed)
 - **Linting:** ESLint (configured via `eslint.config.js`)
 
@@ -24,7 +26,11 @@ A simple React + TypeScript + Vite application demonstrating a drag‑and‑drop
 │  ├─ assets/           Images, SVGs, icons
 │  ├─ components/       Shared UI components (buttons, cards, form inputs)
 │  ├─ constants/        App constants (e.g. sidebar links)
-│  ├─ features/         Feature modules (dashboard, charts, etc.)
+│  ├─ features/         Feature modules (e.g. `dashboard`)
+│   └─ dashboard/
+│       ├─ components/  UI pieces specific to the dashboard feature
+│       ├─ data/        feature constants and mock data
+│       └─ hooks/       custom hooks used within the feature only
 │  ├─ hooks/             Custom React hooks (drag context, item handling)
 │  └─ libs/              Utility helpers
 ├─ tsconfig*.json       TypeScript configuration
@@ -94,7 +100,6 @@ Key packages (see `package.json` for full list):
 
 ## 📄 Notes
 
-- The project uses absolute imports via `tsconfig.json` with baseUrl set to `src`.
 - ESLint configuration lives in `eslint.config.js` and can be extended for stricter rules as needed.
 - Styles are simple CSS, adjust to your own preferred approach (CSS modules, Tailwind, etc.).
 
