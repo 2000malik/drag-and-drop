@@ -6,6 +6,7 @@ type Props = ComponentPropsWithoutRef<'div'> & {
   title?: string;
   icon?: ReactNode;
   isTransparent?: boolean;
+  isTitleMedium?: boolean;
 };
 
 export const HeaderWithIcon: React.FC<Props> = ({
@@ -13,6 +14,7 @@ export const HeaderWithIcon: React.FC<Props> = ({
   icon,
   isTransparent,
   className,
+  isTitleMedium,
   ...props
 }) => {
   return (
@@ -20,7 +22,11 @@ export const HeaderWithIcon: React.FC<Props> = ({
       <div className={cn('rounded-md h-9 flex items-center', !isTransparent && 'bg-gray-100 p-3')}>
         {icon && <span className='text-gray-700'>{icon}</span>}
       </div>
-      {title && <h3 className='text-lg font-bold text-dark'>{title}</h3>}
+      {title && (
+        <h3 className={cn(' text-dark', isTitleMedium ? 'text-base' : 'text-lg font-bold')}>
+          {title}
+        </h3>
+      )}
     </div>
   );
 };
