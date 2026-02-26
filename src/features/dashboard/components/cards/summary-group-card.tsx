@@ -19,7 +19,7 @@ export const SummaryGroupCard: React.FC<Props> = ({
   icon,
   percentageChange = 0,
   value,
-  isNegative=false,
+  isNegative = false,
 }) => {
   return (
     <Card className={cn('flex flex-col gap-8 relative min-h-35 py-4', className)}>
@@ -33,7 +33,7 @@ export const SummaryGroupCard: React.FC<Props> = ({
       </div>
       <div className='text-dark font-medium text-xs'>Compared to last week</div>
       <div className='absolute bottom-4 right-2'>
-        <TinyChart isNegative={isNegative } />
+        <TinyChart isNegative={isNegative} />
       </div>
     </Card>
   );

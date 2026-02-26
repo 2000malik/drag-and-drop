@@ -21,7 +21,7 @@ const Legend: React.FC = () => (
 export const StorageDonutChart: React.FC = () => {
   return (
     <div className='flex flex-col gap-3'>
-      <HeaderWithIcon title='Storage' icon={<Server />} isTitleMedium />
+      <HeaderWithIcon title='Storage' icon={<Server size={17} />} isTitleMedium />
       <div className='flex gap-3 w-full'>
         <div className='relative w-64 h-64 shrink-0'>
           <ResponsiveContainer width='100%' height='100%'>

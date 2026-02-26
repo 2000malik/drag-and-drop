@@ -1,13 +1,17 @@
 import React, { Fragment } from 'react';
 import { Globe } from 'lucide-react';
+import { rectSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 
-import { SectionCard } from '../cards/section-card';
-import { SummaryGroupCard } from '../cards/summary-group-card';
-import { cloudSummaryCards } from '../../data';
-import { StorageDonutChart } from '../charts/storaga-donut';
 import { Card } from '../../../../components';
+import { SectionCard } from '../cards/section-card';
+import { StorageDonutChart } from '../charts/storage-donut';
+import { SummaryGroupCard } from '../cards/summary-group-card';
+import { DraggableItem } from '../../../../hooks/use-drag-item';
+import { useSummaryActions } from '../../hooks/use-summary-actions';
+import { DragContextWrapper } from '../../../../hooks/use-drag-context-wrapper';
 
 export const CloudNetwork: React.FC = () => {
+  const { items,handleDragEnd } = useSummaryActions();
   return (
     <Fragment>
       <SectionCard
@@ -16,18 +20,23 @@ export const CloudNetwork: React.FC = () => {
         onChevron={() => console.log('chevron')}
       />
       <div className='grid grid-cols-2 gap-3'>
-        <div className='grid grid-cols-2 gap-2'>
-          {cloudSummaryCards.map((item) => (
-            <SummaryGroupCard
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-              value={item.value}
-              percentageChange={item.percentageChange}
-              isNegative={item.isNegative}
-            />
-          ))}
-        </div>
+        <DragContextWrapper onDragEnd={handleDragEnd}>
+          <SortableContext items={items.map((i) => i.id)} strategy={rectSortingStrategy}>
+            <div className='grid grid-cols-2 gap-2'>
+              {items.map(({ item, id }) => (
+                <DraggableItem key={item.title} id={id}>
+                  <SummaryGroupCard
+                    title={item.title}
+                    icon={item.icon}
+                    value={item.value}
+                    percentageChange={item.percentageChange}
+                    isNegative={item.isNegative}
+                  />
+                </DraggableItem>
+              ))}
+            </div>
+          </SortableContext>
+        </DragContextWrapper>
         <Card>
           <StorageDonutChart />
         </Card>
