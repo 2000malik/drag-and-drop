@@ -82,7 +82,7 @@ A simple React + TypeScript + Vite application demonstrating a drag‑and‑drop
 ## 🧩 Features
 
 - Drag‑and‑drop ordering using custom hooks (`use-draggable-list.ts`, `use-drag-item.ts`)
-- Dashboard layout with collapsible sidebar
+- Dashboard layout with sidebar
 - Reusable form components (button, input, select)
 - Various chart and card components under `/src/features/dashboard/components`
 
