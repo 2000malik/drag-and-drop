@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { UserRound } from 'lucide-react';
 import { verticalListSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 
@@ -13,15 +13,7 @@ import { TransparentSectionCard } from '../../../cards/transparent-section-card'
 import { DragContextWrapper } from '../../../../../../hooks/use-drag-context-wrapper';
 
 export const ActiveUsers: React.FC = () => {
-  const [coords, setCoords] = useState({ lat: 6.5244, lng: 3.3792 });
   const { items: countries, handleDragEnd } = useDraggableList(country_data, (c) => c.country);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      () => console.warn('Location access denied, using Lagos as default'),
-    );
-  }, []);
 
   return (
     <Card className='h-full flex flex-col px-6'>
@@ -40,7 +32,7 @@ export const ActiveUsers: React.FC = () => {
       />
 
       <div className='grid grid-cols-2 gap-5 flex-1 min-h-0'>
-        <MapCard lat={coords.lat} lng={coords.lng} className='h-full' />
+        <MapCard lat={6.5244} lng={3.3792} className='h-full' />
 
         <DragContextWrapper onDragEnd={handleDragEnd}>
           <SortableContext
