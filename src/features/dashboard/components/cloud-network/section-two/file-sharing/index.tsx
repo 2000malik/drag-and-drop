@@ -16,7 +16,7 @@ export const FileSharing: React.FC = () => {
           icon={<Files size={17} />}
         />
         <div className='flex gap-2'>
-          <div className='flex items-center justify-center border border-primary-light rounded-lg px-3 bg-primary-light text-primary'>
+          <div className='flex items-center justify-center border border-primary-light rounded-lg px-3 bg-primary-light text-primary-text'>
             <Landmark />
           </div>
           <div className='flex items-center justify-center border border-gray-300 rounded-lg px-3 bg-white'>

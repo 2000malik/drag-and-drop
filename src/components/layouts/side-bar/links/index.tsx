@@ -20,7 +20,7 @@ const SidebarItem: React.FC<ItemType> = ({ name, Icon, link = '#', isActive }) =
         className={cn(
           'flex items-center gap-3 px-4 py-3 rounded-xl transition-colors',
           isActive
-            ? 'bg-primary-light text-primary font-bold'
+            ? 'bg-primary-light text-primary-text font-bold'
             : 'text-dark hover:bg-primary-light hover:text-primary hover:font-bold',
         )}
       >
