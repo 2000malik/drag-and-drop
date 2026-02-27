@@ -22,7 +22,7 @@ export const SummaryGroupCard: React.FC<Props> = ({
   isNegative = false,
 }) => {
   return (
-    <Card className={cn('flex flex-col gap-8 relative min-h-35 py-4', className)}>
+    <Card className={cn('flex flex-col gap-10 relative min-h-35 py-4', className)}>
       <HeaderWithIcon title={title} icon={icon} isTitleMedium />
       <div className='flex items-center gap-2'>
         <h3 className='text-xl font-bold text-dark'>{value}</h3>

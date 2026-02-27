@@ -13,6 +13,7 @@ type Props = {
   className?: string;
   subTitle?: string;
   showIcon?: boolean;
+  action?: ReactNode;
 };
 
 export const TransparentSectionCard: React.FC<Props> = ({
@@ -23,15 +24,17 @@ export const TransparentSectionCard: React.FC<Props> = ({
   onChevron,
   className,
   subTitle,
+  action,
   showIcon,
 }) => {
   return (
     <div className={cn('min-h-17 flex items-center justify-between', className)}>
-      <div className='flex flex-col'>
-        <HeaderWithIcon isTransparent title={title} icon={icon} />
-        <p className='text-grey-shade-1 text-sm '>{subTitle}</p>
+      <div className='flex flex-col gap-1'>
+        <HeaderWithIcon  title={title} icon={icon} />
+        <p className='text-dark text-sm '>{subTitle}</p>
       </div>
       <div className='flex gap-5'>
+        {action && action}
         {actionLabel && (
           <Button showIcon={showIcon} onClick={onAction}>
             {actionLabel}
